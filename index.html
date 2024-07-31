@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <style>#impressum,#datenschutz,#uberuns,#input-form,#confirm{display:none}</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kleiderspenden-Registrierung</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"/>
+      <style>
+        .form-container {
+            flex: 1;
+            display: flex;}
+        .form-group {
+            flex: 3;         
+            margin-bottom: 10px;}
+        .form-check {
+            flex: 1;}
+        @media (max-width: 767px) {
+            .form-container {
+                flex-direction: column;
+                margin-right: 80px;}
+            .form-group {
+            margin-right: 10px;}
+            .form-check {
+                margin-right: 0;
+                margin-top: 10px;
+                margin-bottom: 20px;}
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark text-light text-center py-3">
+        <h1 class="display-1 text-center">Kleiderspenden-Registrierung</h1>
+        <h2 class="display-6">Hier können Sie Ihre Kleidungspende registrieren!</h2>
+    </header>
+    <nav class="navbar bg-light">
+        <ul class="list-inline justify-content-center mx-auto">
+          <li class="list-inline-item"><a href="javascript:void(0);" onclick="zeigeHome()">Home</a></li>
+          <li class="list-inline-item"><a href="javascript:void(0);" onclick="subSitecontent('uberuns')">Über uns</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="main-content" class="row">
+            <div id="formular" class="ms-4">
+                <h2>Registrierungsformular:</h2><br>
+                <form id="registrationForm">
+                    <div class="form-container">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="geschaeft" name="terms" value="geschaeft" required onclick="toggleForm()">
+                            <label class="form-check-label" for="terms">Übergabe an der Geschäftsstelle</label><br><br>
+                            <input type="radio" class="form-check-input" id="abholung" name="terms" value="abholung" required onclick="toggleForm()">
+                            <label class="form-check-label" for="terms">Abholung</label><br><br>
+                            <div class="form-sel">
+                            <label class="form-check-label" for="terms">Art der Kleidung:</label><br>
+                            <div class="checkbox-container">
+                                <label><input type="checkbox" name="k_items" value="Hose"> Hose</label><br>
+                                <label><input type="checkbox" name="k_items" value="T-Shirt"> T-Shirt</label><br>
+                                <label><input type="checkbox" name="k_items" value="Pullover"> Pullover</label><br>
+                                <label><input type="checkbox" name="k_items" value="Socken"> Socken</label><br>
+                                <label><input type="checkbox" name="k_items" value="Mütze"> Mütze</label><br>
+                                <label><input type="checkbox" name="k_items" value="Schuhe"> Schuhe</label><br>
+                                <label><input type="checkbox" name="k_items" value="Jacke"> Jacke</label><br>
+                            </div>
+                        
+                            <br>
+                            <label class="form-check-label" for="terms">Krisengebiet:</label>
+                            <select for="Krisengebiet" id="krisengebiet">
+                                <option value="nix"></option>
+                                <option value="ukraine">Ukraine</option>
+                                <option value="syrien">Syrien</option>
+                                <option value="afghanistan">Afghanistan</option>
+                                <option value="äthiopien">Äthiopien</option>
+                                <option value="sudan">Sudan</option>
+                            </select><br><br>
+                        </div>
+                        </div>
+                        <div class="form-group" id="input-form">
+                            <h2>Abholadresse:</h2><br>
+                            <label for="vorname">Vorname:</label><br>
+                            <input type="text" id="vorname" name="nachname" ><br><br>
+                            <label for="nachname">Nachname:</label><br>
+                            <input type="text" id="nachname" name="nachname" ><br><br>
+                            <label for="strasse">Straße:</label><br>
+                            <input type="text" id="strasse" name="strasse" ><br><br>
+                            <label for="postleitzahl">Postleitzahl:</label><br>
+                            <input type="text" id="postleitzahl" name="postleitzahl" ><br><br>
+                            <label for="stadt">Stadt</label><br>
+                            <input type="stadt" id="stadt" name="stadt" ><br><br><br>
+                        </div>    
+                    </div>
+                    <input type="submit" value="Registrieren" id="regist">
+                </form>
+            </div>
+            <div id="error-label" class="ms-4">
+                <label for="error-label" id="error-label" class="text-white">Platzhalter</label>
+            </div>
+        </div>
+        <div id="confirm" class="m-4">
+            <h2>Registrierung erfolgreich!</h2><br>
+            <h3>Folgende Daten wurden aufgenommen:</h3><br>
+            <label id="zeitpunktConfirm"></label><br>
+            <label id="ortConfirm"></label><br>
+            <label id="kleidungConfirm"></label><br>
+            <label id="krisengebietConfirm"></label><br>  
+            <label id="abholConfirm"></label><br>  
+            <label id="vornameConfirm"></label>
+            <label id="nachnameConfirm"></label><br>
+            <label id="strasseConfirm"></label><br>
+            <label id="postleitzahlConfirm"></label>
+            <label id="stadtConfirm"></label>
+
+        </div>
+        <script>
+            function subSitecontent(content) {
+            var mainContent = document.getElementById("main-content");
+            var subContent = document.getElementById(content);
+            mainContent.style.display = "none";
+            impressum.style.display = "none";
+            datenschutz.style.display = "none";
+            uberuns.style.display = "none";
+            subContent.style.display = "block";
+            }
+            function zeigeHome(){
+                var mainContent = document.getElementById("main-content");
+                var impressum = document.getElementById("impressum");
+                var datenschutz = document.getElementById("datenschutz");
+                var uberuns = document.getElementById("uberuns");
+                var confirmContent =document.getElementById("confirm");
+                mainContent.style.display = "block";
+                impressum.style.display = "none";
+                datenschutz.style.display = "none";
+                uberuns.style.display = "none";
+                confirmContent.style.display = "none"
+            }
+            function toggleForm() {
+                var terms1 = document.getElementById("geschaeft");
+                var inputForm = document.getElementById("input-form");
+                if (terms1.checked) {
+                    inputForm.style.display = "none";
+                } else {
+                    inputForm.style.display = "block" ;
+                }
+            }
+            document.getElementById('registrationForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                document.getElementById('error-label').style.color= 'white'
+                document.getElementById('error-label').innerText = "Platzhalter";
+                var checkboxes = document.querySelectorAll('input[name="k_items"]:checked');
+                var ausgewahlteItems = [];
+                checkboxes.forEach((checkbox) => {ausgewahlteItems.push(checkbox.value);});
+                if (ausgewahlteItems.length==0){
+                   errorMessage("Bitte die Art der Kleidung auswählen.")
+                   return;}
+                var gebietSelect = document.getElementById('krisengebiet');//Element mit der ID "kleidung beschaffen"
+                var ausgewahlterText2 = gebietSelect.options[gebietSelect.selectedIndex].text;// Den ausgewählten Text aus dem select-Element auslesen
+                if (ausgewahlterText2==""){
+                    errorMessage("Bitte ein Krisengebiet auswählen.")
+                    return;}
+                if (document.getElementById('abholung').checked){
+                    if (document.getElementById('vorname').value==""){errorMessage("Bitte Vornamen eingeben.");return;}
+                    if (document.getElementById('nachname').value==""){errorMessage("Bitte Nachnamen eingeben.");return;}
+                    if (document.getElementById('strasse').value==""){errorMessage("Bitte Straße eingeben.");return;}
+                    if (document.getElementById('postleitzahl').value==""){errorMessage("Bitte Postleitzahl eingeben.");return;}
+                    if (document.getElementById('stadt').value==""){errorMessage("Bitte Stadt eingeben.");return;}
+                    var first2postleitzahl = document.getElementById("postleitzahl").value.substring(0,2);
+                    if (first2postleitzahl!=14){errorMessage("Der Abholort ist zu weit entfert.")}
+                }
+                
+                buildConfirmSite();   
+                clearRegist();
+                showConfirmSite();
+                
+            })
+            function showConfirmSite(){
+                var mainContent = document.getElementById("main-content");
+                mainContent.style.display = "none";
+                var confirmContent = document.getElementById("confirm");
+                confirmContent.style.display= "block";
+            }
+            function clearRegist(){
+                var inputs = document.querySelectorAll('#registrationForm input');
+                inputs.forEach(function(input) {if (input.id!='regist'){
+                input.value = '';}});
+                var radios = document.querySelectorAll('input[type="radio"]');
+                radios.forEach(function(radio) {
+                radio.checked = false;});
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(function(checkbox) {
+                checkbox.checked = false;});
+                var selectElement = document.getElementById("krisengebiet");
+                selectElement.selectedIndex = 0
+            }
+            function buildConfirmSite(){
+                
+                const now = new Date();
+                const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                const formattedDateTime = now.toLocaleDateString('de-DE', options);
+                document.getElementById('zeitpunktConfirm').innerText = `Zeitpunkt: ${formattedDateTime}`;  
+                 
+                var terms1 = document.getElementById("geschaeft");  
+                if (terms1.checked) {temp_text="Übergabe an der Geschäftsstelle."}else{temp_text="Abholen von Abholadresse."}
+                document.getElementById('ortConfirm').innerText=temp_text
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                var selectedTexts = [];
+                
+                var checkboxes = document.querySelectorAll('input[name="k_items"]:checked');
+                var ausgewahlteItems = [];
+                checkboxes.forEach((checkbox) => {
+                    ausgewahlteItems.push(checkbox.parentElement.textContent.trim());
+                });
+                document.getElementById('kleidungConfirm').innerText="Ausgewählte Kleidung: " + ausgewahlteItems.join(', ');
+
+                var gebietSelect = document.getElementById('krisengebiet');
+                var ausgewahlterText2 = gebietSelect.options[gebietSelect.selectedIndex].text;
+                document.getElementById('krisengebietConfirm').innerText="Ausgewähltes Krisengebiet: "+ausgewahlterText2
+                
+                if (terms1.checked){
+                                        document.getElementById('abholConfirm').innerText=""
+                    document.getElementById('vornameConfirm').innerText=""
+                    document.getElementById('nachnameConfirm').innerText=""
+                    document.getElementById('strasseConfirm').innerText=""
+                    document.getElementById('postleitzahlConfirm').innerText=""
+                    document.getElementById('stadtConfirm').innerText=""
+                }else{
+                    document.getElementById('abholConfirm').innerText="Abholadresse:";
+                    document.getElementById('abholConfirm').style.fontWeight = "bold";
+                    document.getElementById('vornameConfirm').innerText=document.getElementById('vorname').value+" ";
+                    document.getElementById('nachnameConfirm').innerText=document.getElementById('nachname').value;
+                    document.getElementById('strasseConfirm').innerText=document.getElementById('strasse').value;
+                    document.getElementById('postleitzahlConfirm').innerText=document.getElementById('postleitzahl').value+" ";
+                    document.getElementById('stadtConfirm').innerText=document.getElementById('stadt').value;
+                }
+            }
+            function errorMessage(text){
+                document.getElementById('error-label').style.color= 'red'
+                document.getElementById('error-label').classList.add('ms-4')
+                document.getElementById('error-label').innerText = text;
+            }
+        </script>
+    </main>
+    <div id="impressum">
+        <h2>Impressum</h2>
+        <p>Hier steht das Impressum</p>
+    </div>
+    <div id="datenschutz">
+        <h2>Datenschutz</h2>
+        <p>Hier stehen Informationen zum Datenschutz</p>
+    </div>
+    <div id="uberuns">
+        <h2>Infos über Uns</h2>
+        <p>Hier stehen Informationen über uns</p>
+    </div>
+    <footer class="mt-5 bg-light text-center">
+        <ul class="list-inline justify-content-center mx-auto">
+          <li class="list-inline-item"><a href="javascript:void(0);" onclick="subSitecontent('impressum')">Impressum</a></li>
+          <li class="list-inline-item"><a href="javascript:void(0);" onclick="subSitecontent('datenschutz')">Datenschutz</a></li>
+        </ul>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
