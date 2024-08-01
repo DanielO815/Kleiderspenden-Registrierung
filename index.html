@@ -115,13 +115,15 @@
         </div>
         <script>
             function subSitecontent(content) {
-            var mainContent = document.getElementById("main-content");
-            var subContent = document.getElementById(content);
-            mainContent.style.display = "none";
-            impressum.style.display = "none";
-            datenschutz.style.display = "none";
-            uberuns.style.display = "none";
-            subContent.style.display = "block";
+                var mainContent = document.getElementById("main-content");
+                var subContent = document.getElementById(content);
+                var confirmContent =document.getElementById("confirm");
+                mainContent.style.display = "none";
+                impressum.style.display = "none";
+                datenschutz.style.display = "none";
+                uberuns.style.display = "none";
+                confirmContent.style.display = "none"
+                subContent.style.display = "block";
             }
             function zeigeHome(){
                 var mainContent = document.getElementById("main-content");
