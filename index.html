@@ -18,23 +18,59 @@
             margin-bottom: 10px;}
         .form-check {
             flex: 1;}
+        .checkbox-container label, .select-container select {
+                margin: 7px;}
+        .container {
+                display: flex;
+                margin-left: 0;}   
+        .checkbox-container, .select-container {
+                display: flex;
+                flex-direction: column;}
+        .logo-center, .logo-left  , .logo-right {
+                display: none;}
+        .header {
+            justify-content: space-between;
+            display: flex;
+            height: 200px;}
         @media (max-width: 767px) {
             .form-container {
+                flex-direction: column;}
+            .logo-left, .logo-right, .heading {
+                display: none;}
+            .logo-center {
+                display: flex;}
+            .logo-center img {
+                width: 100%;}
+            .header{
                 flex-direction: column;
-                margin-right: 80px;}
-            .form-group {
-            margin-right: 10px;}
-            .form-check {
-                margin-right: 0;
-                margin-top: 10px;
-                margin-bottom: 20px;}
+                height:auto;}    
+        }
+        @media (min-width: 768px) {
+            .logo-left img, .logo-right img {
+                height: 100%;}
+            .logo-left, .logo-right {
+                display: flex;}
+            .logo-center {
+                display: none;}         
+            
         }
     </style>
 </head>
 <body>
-    <header class="bg-dark text-light text-center py-3">
-        <h1 class="display-1 text-center">Kleiderspenden-Registrierung</h1>
-        <h2 class="display-6">Hier können Sie Ihre Kleidungspende registrieren!</h2>
+    <header class="bg-dark text-light text-center container-fluid header py-3">
+        <div class="logo-center my-3">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <div class="logo-left">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <div>
+            <h1 class="display-1 text-center">Kleiderspenden-Registrierung</h1>
+            <h2 class="display-6">Hier können Sie Ihre Kleidungspende registrieren!</h2>
+        </div>  
+        <div class="logo-right">
+            <img src="logo.png" alt="Logo">
+        </div>
     </header>
     <nav class="navbar bg-light">
         <ul class="list-inline justify-content-center mx-auto">
@@ -49,21 +85,33 @@
                 <form id="registrationForm">
                     <div class="form-container">
                         <div class="form-check">
+                            
                             <input type="radio" class="form-check-input" id="geschaeft" name="terms" value="geschaeft" required onclick="toggleForm()">
                             <label class="form-check-label" for="terms">Übergabe an der Geschäftsstelle</label><br><br>
                             <input type="radio" class="form-check-input" id="abholung" name="terms" value="abholung" required onclick="toggleForm()">
                             <label class="form-check-label" for="terms">Abholung</label><br><br>
                             <div class="form-sel">
-                            <label class="form-check-label" for="terms">Art der Kleidung:</label><br>
-                            <div class="checkbox-container">
-                                <label><input type="checkbox" name="k_items" value="Hose"> Hose</label><br>
-                                <label><input type="checkbox" name="k_items" value="T-Shirt"> T-Shirt</label><br>
-                                <label><input type="checkbox" name="k_items" value="Pullover"> Pullover</label><br>
-                                <label><input type="checkbox" name="k_items" value="Socken"> Socken</label><br>
-                                <label><input type="checkbox" name="k_items" value="Mütze"> Mütze</label><br>
-                                <label><input type="checkbox" name="k_items" value="Schuhe"> Schuhe</label><br>
-                                <label><input type="checkbox" name="k_items" value="Jacke"> Jacke</label><br>
-                            </div>
+                            <label class="form-check-label" for="terms">Art und Anzahl der Kleidung:</label><br><br>
+                                <div class="container">
+                                    <div class="checkbox-container">
+                                        <label><input type="checkbox" name="k_items" value="Hose"> Hose</label>
+                                        <label><input type="checkbox" name="k_items" value="T-Shirt"> T-Shirt</label>
+                                        <label><input type="checkbox" name="k_items" value="Pullover"> Pullover</label>
+                                        <label><input type="checkbox" name="k_items" value="Socken"> Socken</label>
+                                        <label><input type="checkbox" name="k_items" value="Mütze"> Mütze</label>
+                                        <label><input type="checkbox" name="k_items" value="Schuhe"> Schuhe</label>
+                                        <label><input type="checkbox" name="k_items" value="Jacke"> Jacke</label>
+                                    </div>
+                                    <div class="select-container">
+                                        <select for="anz_hose" id="anz_hose"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                        <select for="anz_shirt" id="anz_shirt"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                        <select for="anz_pulli" id="anz_pulli"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                        <select for="anz_sock" id="anz_sock"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                        <select for="anz_muetze" id="anz_muetze"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                        <select for="anz_schuh" id="anz_schuh"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                        <select for="anz_jack" id="anz_jack"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                    </div>
+                                </div>    
                         
                             <br>
                             <label class="form-check-label" for="terms">Krisengebiet:</label>
