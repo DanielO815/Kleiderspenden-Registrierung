@@ -14,24 +14,21 @@
         
         .form-container {
             flex: 1;
-
             display: flex;}
         .form-group {
-            flex: 2;      
+            flex: 3;      
             margin-bottom: 10px;}
         .form-check {
             flex: 1;}
         .checkbox-container label, .select-container select {
-            
-            margin: 4px;
-                }
+            flex:auto;}
+             
         .container {
-            
-                display: flex;
-                margin-left: 0;
-                }   
+            display: flex; 
+            margin-left: 0;
+            padding: 0;}   
         .checkbox-container, .select-container {
-                           
+                padding: 2px;           
                 display: flex;
                 flex-direction: column;}
         .logo-center, .logo-left  , .logo-right {
@@ -86,41 +83,43 @@
         </ul>
     </nav>
     <main>
-        <div id="main-content">
+        <div id="main-content" class="ms-4">
             <div id="formular">
                 <h2>Registrierungsformular:</h2><br>
                 <form id="registrationForm">
                     <div class="form-container">
                         <div class="form-check">
-                            
-                            <input type="radio" class="form-check-input" id="geschaeft" name="terms" value="geschaeft" required onclick="toggleForm()">
-                            <label class="form-check-label" for="terms">Übergabe an der Geschäftsstelle</label><br><br>
-                            <input type="radio" class="form-check-input" id="abholung" name="terms" value="abholung" required onclick="toggleForm()">
-                            <label class="form-check-label" for="terms">Abholung</label><br><br>
+                            <label><input type="radio" class="form-check-input" id="geschaeft" name="terms" value="geschaeft" required onclick="toggleForm()">
+                            Übergabe an der Geschäftsstelle
+                            </label><br><br>
+                             <label><input type="radio" class="form-check-input" id="abholung" name="terms" value="abholung" required onclick="toggleForm()">
+                            Abholung
+                            </label><br><br>
                             <div class="form-sel">
                             <label class="form-check-label" for="terms">Art und Anzahl der Kleidung:</label><br><br>
                                 <div class="container">
                                     <div class="checkbox-container">
-                                        <label><input type="checkbox" name="k_items" value="Hose"> Hose</label>
-                                        <label><input type="checkbox" name="k_items" value="T-Shirt"> T-Shirt</label>
-                                        <label><input type="checkbox" name="k_items" value="Pullover"> Pullover</label>
-                                        <label><input type="checkbox" name="k_items" value="Socken"> Socken</label>
-                                        <label><input type="checkbox" name="k_items" value="Mütze"> Mütze</label>
-                                        <label><input type="checkbox" name="k_items" value="Schuhe"> Schuhe</label>
-                                        <label><input type="checkbox" name="k_items" value="Jacke"> Jacke</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" value="Hose"> Hose</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" value="T-Shirt"> T-Shirt</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" value="Pullover"> Pullover</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" value="Socken"> Socken</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" value="Mütze"> Mütze</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" value="Schuhe"> Schuhe</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" value="Jacke"> Jacke</label>
                                     </div>
                                     <div class="select-container">
-                                        <select for="anz_hose" id="anz_hose"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
-                                        <select for="anz_shirt" id="anz_shirt"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
-                                        <select for="anz_pulli" id="anz_pulli"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
-                                        <select for="anz_sock" id="anz_sock"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
-                                        <select for="anz_muetze" id="anz_muetze"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
-                                        <select for="anz_schuh" id="anz_schuh"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
-                                        <select for="anz_jack" id="anz_jack"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                        <select  class="m-2" for="anz_hose" id="anz_hose"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                        <select  class="m-2" for="anz_shirt" id="anz_shirt"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                        <select  class="m-2" for="anz_pulli" id="anz_pulli"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                        <select  class="m-2" for="anz_sock" id="anz_sock"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                        <select  class="m-2" for="anz_muetze" id="anz_muetze"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                        <select  class="m-2" for="anz_schuh" id="anz_schuh"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
+                                        <select  class="m-2" for="anz_jack" id="anz_jack"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
                                     </div>
                                 </div>    
                         
                             <br>
+                            <div class="ms-3">
                             <label class="form-check-label" for="terms">Krisengebiet:</label>
                             <select for="Krisengebiet" id="krisengebiet">
                                 <option value="nix"></option>
@@ -130,6 +129,7 @@
                                 <option value="äthiopien">Äthiopien</option>
                                 <option value="sudan">Sudan</option>
                             </select><br><br>
+                            </div>
                         </div>
                         </div>
                         <div class="form-group" id="input-form">
