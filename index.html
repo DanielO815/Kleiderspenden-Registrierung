@@ -224,7 +224,7 @@
                     if (document.getElementById('postleitzahl').value==""){errorMessage("Bitte Postleitzahl eingeben.");return;}
                     if (document.getElementById('stadt').value==""){errorMessage("Bitte Stadt eingeben.");return;}
                     var first2postleitzahl = document.getElementById("postleitzahl").value.substring(0,2);
-                    if (first2postleitzahl!=14){errorMessage("Der Abholort ist zu weit entfert.")}
+                    if (first2postleitzahl!=14){errorMessage("Der Abholort ist zu weit entfert. Die Postleitzahl muss mit 14 beginnen.");return;}
                 }
                 
                 buildConfirmSite();   
