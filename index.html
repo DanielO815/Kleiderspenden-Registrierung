@@ -31,12 +31,18 @@
                 padding: 2px;           
                 display: flex;
                 flex-direction: column;}
-        .logo-center, .logo-left  , .logo-right {
+        .logo-center {
                 display: none;}
         .header {
             justify-content: space-between;
             display: flex;
             height: 250px;}
+        .logo-left img, .logo-right img {
+            height: 100%;}
+        .logo-left, .logo-right {
+            display: flex;}
+        .logo-center {
+            display: none;}  
         @media (max-width: 767px) {
             .form-container {
                 flex-direction: column;}
@@ -50,14 +56,6 @@
                 flex-direction: column;
                 height:auto;}    
         }
-        @media (min-width: 768px) {
-            .logo-left img, .logo-right img {
-                height: 100%;}
-            .logo-left, .logo-right {
-                display: flex;}
-            .logo-center {
-                display: none;}         
-        }
     </style>
 </head>
 <body>
@@ -69,7 +67,7 @@
             <img src="logo.png" alt="Logo">
         </div>
         <div class="d-flex flex-column align-items-center justify-content-center">
-            <h1 class="display-3">Kleiderspenden-Registrierung</h1>
+            <h1 class="display-3">Altleiderspende-Brandenburg</h1>
             <h3 class="display-6">Hier können Sie Ihre Kleidungspende registrieren!</h2>
         </div>  
         <div class="logo-right">
@@ -77,9 +75,9 @@
         </div>
     </header>
     <nav class="navbar bg-light">
-        <ul class="list-inline align-items-center justify-content-center m-auto py-2">
-          <li class="list-inline-item"><a href="javascript:void(0);" onclick="zeigeHome()">Home</a></li>
-          <li class="list-inline-item"><a href="javascript:void(0);" onclick="subSitecontent('uberuns')">Über uns</a></li>
+        <ul class="m-auto py-2">
+          <li class="list-inline-item"><a href="javascript:void(0);" onclick="showSitecontent('main-content')">Home</a></li>
+          <li class="list-inline-item"><a href="javascript:void(0);" onclick="showSitecontent('uberuns')">Über uns</a></li>
         </ul>
     </nav>
     <main>
@@ -143,7 +141,9 @@
                             <label for="postleitzahl">Postleitzahl:</label><br>
                             <input type="text" id="postleitzahl" name="postleitzahl" ><br><br>
                             <label for="stadt">Stadt</label><br>
-                            <input type="stadt" id="stadt" name="stadt" ><br><br><br>
+                            <input type="stadt" id="stadt" name="stadt" ><br><br>
+                            <label for="email">E-Mail</label><br>
+                            <input type="email" id="email" name="email" ><br><br><br>
                         </div>    
                     </div>
                     <input class="ms-4" type="submit" value="Registrieren" id="regist">
@@ -153,7 +153,7 @@
                 <label for="error-label" id="error-label" class="text-white">Platzhalter</label>
             </div>
         </div>
-        <div id="confirm" class="m-4">
+        <div id="confirm">
             <h2>Registrierung erfolgreich!</h2><br>
             <h3>Folgende Daten wurden aufgenommen:</h3><br>
             <label id="zeitpunktConfirm"></label><br>
@@ -165,12 +165,16 @@
             <label id="nachnameConfirm"></label><br>
             <label id="strasseConfirm"></label><br>
             <label id="postleitzahlConfirm"></label>
-            <label id="stadtConfirm"></label>
+            <label id="stadtConfirm"></label><br>
+            <label id="emailConfirm"></label>
 
         </div>
         <script>
-            function subSitecontent(content) {
+            function showSitecontent(content) {
                 var mainContent = document.getElementById("main-content");
+                var impressum = document.getElementById("impressum");
+                var datenschutz = document.getElementById("datenschutz");
+                var uberuns = document.getElementById("uberuns");
                 var subContent = document.getElementById(content);
                 var confirmContent =document.getElementById("confirm");
                 mainContent.style.display = "none";
@@ -180,18 +184,7 @@
                 confirmContent.style.display = "none"
                 subContent.style.display = "block";
             }
-            function zeigeHome(){
-                var mainContent = document.getElementById("main-content");
-                var impressum = document.getElementById("impressum");
-                var datenschutz = document.getElementById("datenschutz");
-                var uberuns = document.getElementById("uberuns");
-                var confirmContent =document.getElementById("confirm");
-                mainContent.style.display = "block";
-                impressum.style.display = "none";
-                datenschutz.style.display = "none";
-                uberuns.style.display = "none";
-                confirmContent.style.display = "none"
-            }
+            
             function toggleForm() {
                 var terms1 = document.getElementById("geschaeft");
                 var inputForm = document.getElementById("input-form");
@@ -289,6 +282,7 @@
                     document.getElementById('strasseConfirm').innerText=""
                     document.getElementById('postleitzahlConfirm').innerText=""
                     document.getElementById('stadtConfirm').innerText=""
+                    document.getElementById('emailConfirm').innerText=""
                 }else{
                     document.getElementById('abholConfirm').innerText="Abholadresse:";
                     document.getElementById('abholConfirm').style.fontWeight = "bold";
@@ -297,6 +291,7 @@
                     document.getElementById('strasseConfirm').innerText=document.getElementById('strasse').value;
                     document.getElementById('postleitzahlConfirm').innerText=document.getElementById('postleitzahl').value+" ";
                     document.getElementById('stadtConfirm').innerText=document.getElementById('stadt').value;
+                    document.getElementById('emailConfirm').innerText="Informationen zur Abholung werden an die E-Mail Adresse "+ document.getElementById('email').value+" gesendet.";
                 }
             }
             function errorMessage(text){
@@ -320,8 +315,8 @@
     </div>
     <footer class="mt-5 bg-light text-center">
         <ul class="list-inline align-items-center justify-content-center m-auto py-2">
-          <li class="list-inline-item"><a href="javascript:void(0);" onclick="subSitecontent('impressum')">Impressum</a></li>
-          <li class="list-inline-item"><a href="javascript:void(0);" onclick="subSitecontent('datenschutz')">Datenschutz</a></li>
+          <li class="list-inline-item"><a href="javascript:void(0);" onclick="showSitecontent('impressum')">Impressum</a></li>
+          <li class="list-inline-item"><a href="javascript:void(0);" onclick="showSitecontent('datenschutz')">Datenschutz</a></li>
         </ul>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
