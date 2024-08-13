@@ -16,7 +16,7 @@
             flex: 1;
             display: flex;}
         .form-group {
-            flex: 3;      
+            flex: 2;      
             margin-bottom: 10px;}
         .form-check {
             flex: 1;}
@@ -67,7 +67,7 @@
             <img src="logo.png" alt="Logo">
         </div>
         <div class="d-flex flex-column align-items-center justify-content-center">
-            <h1 class="display-3">Altleiderspende-Brandenburg</h1>
+            <h1 class="display-3">Kleiderspende-Brandenburg</h1>
             <h3 class="display-6">Hier können Sie Ihre Kleidungspende registrieren!</h2>
         </div>  
         <div class="logo-right">
@@ -82,28 +82,26 @@
     </nav>
     <main>
         <div id="main-content" class="ms-4">
-            <div id="formular">
+            
                 <h2>Registrierungsformular:</h2><br>
                 <form id="registrationForm">
                     <div class="form-container">
                         <div class="form-check">
-                            <label><input type="radio" class="form-check-input" id="geschaeft" name="terms" value="geschaeft" required onclick="toggleForm()">
-                            Übergabe an der Geschäftsstelle
-                            </label><br><br>
-                             <label><input type="radio" class="form-check-input" id="abholung" name="terms" value="abholung" required onclick="toggleForm()">
-                            Abholung
-                            </label><br><br>
+                            <input type="radio" class="form-check-input" id="geschaeft" name="terms" value="geschaeft" required onclick="toggleForm()">
+                            <label class="form-check-label border border-primary rounded px-2" for="geschaeft">Übergabe an der Geschäftsstelle</label><br><br>
+                            <input type="radio" class="form-check-input" id="abholung" name="terms" value="abholung" required onclick="toggleForm()">
+                            <label class="form-check-label border border-primary rounded px-2" for="abholung">Abholung über Abholfahrzeug</label><br><br>
                             <div class="form-sel">
                             <label class="form-check-label" for="terms">Art und Anzahl der Kleidung:</label><br><br>
                                 <div class="container">
                                     <div class="checkbox-container">
-                                        <label class="m-2"><input type="checkbox" name="k_items" value="Hose"> Hose</label>
-                                        <label class="m-2"><input type="checkbox" name="k_items" value="T-Shirt"> T-Shirt</label>
-                                        <label class="m-2"><input type="checkbox" name="k_items" value="Pullover"> Pullover</label>
-                                        <label class="m-2"><input type="checkbox" name="k_items" value="Socken"> Socken</label>
-                                        <label class="m-2"><input type="checkbox" name="k_items" value="Mütze"> Mütze</label>
-                                        <label class="m-2"><input type="checkbox" name="k_items" value="Schuhe"> Schuhe</label>
-                                        <label class="m-2"><input type="checkbox" name="k_items" value="Jacke"> Jacke</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" id="Hose"> Hose</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" id="T-Shirt"> T-Shirt</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" id="Pullover"> Pullover</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" id="Socken"> Socken</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" id="Mütze"> Mütze</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" id="Schuhe"> Schuhe</label>
+                                        <label class="m-2"><input type="checkbox" name="k_items" id="Jacke"> Jacke</label>
                                     </div>
                                     <div class="select-container" id="select-anzahl">
                                         <select  class="m-2" for="anz_hose" id="anz_Hose"><option>1-5</option><option>5-10</option><option>10-50</option><option>über 50</option></select>
@@ -132,28 +130,28 @@
                         </div>
                         <div class="form-group" id="input-form">
                             <h2>Abholadresse:</h2><br>
-                            <label for="vorname">Vorname:</label><br>
-                            <input type="text" id="vorname" name="nachname" ><br><br>
-                            <label for="nachname">Nachname:</label><br>
-                            <input type="text" id="nachname" name="nachname" ><br><br>
-                            <label for="strasse">Straße:</label><br>
-                            <input type="text" id="strasse" name="strasse" ><br><br>
-                            <label for="postleitzahl">Postleitzahl:</label><br>
-                            <input type="text" id="postleitzahl" name="postleitzahl" ><br><br>
-                            <label for="stadt">Stadt</label><br>
-                            <input type="stadt" id="stadt" name="stadt" ><br><br>
-                            <label for="email">E-Mail</label><br>
-                            <input type="email" id="email" name="email" ><br><br><br>
+                            <label>Vorname:</label><br>
+                            <input type="text" id="vorname"><br><br>
+                            <label>Nachname:</label><br>
+                            <input type="text" id="nachname"><br><br>
+                            <label>Straße:</label><br>
+                            <input type="text" id="strasse"><br><br>
+                            <label>Postleitzahl:</label><br>
+                            <input type="text" id="postleitzahl"><br><br>
+                            <label>Stadt</label><br>
+                            <input type="stadt" id="stadt"><br><br>
+                            <label>E-Mail</label><br>
+                            <input type="email" id="email"><br><br><br>
                         </div>    
                     </div>
                     <input class="ms-4" type="submit" value="Registrieren" id="regist">
                 </form>
-            </div>
+           
             <div id="error-label" class="ms-4">
                 <label for="error-label" id="error-label" class="text-white">Platzhalter</label>
             </div>
         </div>
-        <div id="confirm">
+        <div id="confirm" class="m-4">
             <h2>Registrierung erfolgreich!</h2><br>
             <h3>Folgende Daten wurden aufgenommen:</h3><br>
             <label id="zeitpunktConfirm"></label><br>
@@ -167,7 +165,6 @@
             <label id="postleitzahlConfirm"></label>
             <label id="stadtConfirm"></label><br>
             <label id="emailConfirm"></label>
-
         </div>
         <script>
             function showSitecontent(content) {
@@ -245,36 +242,37 @@
                 selectElement.selectedIndex = 0
                 var inputs = document.querySelectorAll('#select-anzahl select');
                 inputs.forEach(function(input) {input.selectedIndex=0});
+                
             }
             function buildConfirmSite(){
                 
+                //Datum ermitteln und aufgearbeitet übergeben
                 const now = new Date();
                 const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
                 const formattedDateTime = now.toLocaleDateString('de-DE', options);
                 document.getElementById('zeitpunktConfirm').innerText = `Zeitpunkt: ${formattedDateTime}`;  
-                 
+                //Text abhängig von Radiobutton "geschaeft ermitteln"
                 var terms1 = document.getElementById("geschaeft");  
                 if (terms1.checked) {temp_text="Übergabe an der Geschäftsstelle."}else{temp_text="Abholen von Abholadresse."}
                 document.getElementById('ortConfirm').innerText=temp_text
-                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                var selectedTexts = [];
-                
+                //Text für Art und Anzahl Kleidung zusammenstellen
+                               
                 var checkboxes = document.querySelectorAll('input[name="k_items"]:checked');
                 var ausgewahlteItems = [];
                 var select_anzahl=[];
                 var select_anzahl_text=[]
-                 
-                 checkboxes.forEach((checkbox) => {
-                    select_anzahl=document.getElementById("anz_"+checkbox.value)  
+                checkboxes.forEach((checkbox) => {
+                    select_anzahl=document.getElementById("anz_"+checkbox.id)
+                    
                     select_anzahl_text=select_anzahl.options[select_anzahl.selectedIndex].text;
                     ausgewahlteItems.push(checkbox.parentElement.textContent.trim()+"("+select_anzahl_text+" Stk.)")
                 });
                 document.getElementById('kleidungConfirm').innerText="Ausgewählte Kleidung: " + ausgewahlteItems.join(', ');
-
+                //Text für Krisengebiet aus Dropdown 
                 var gebietSelect = document.getElementById('krisengebiet');
                 var ausgewahlterText2 = gebietSelect.options[gebietSelect.selectedIndex].text;
                 document.getElementById('krisengebietConfirm').innerText="Ausgewähltes Krisengebiet: "+ausgewahlterText2
-                
+                //optinalen Text für Adressangaben
                 if (terms1.checked){
                     document.getElementById('abholConfirm').innerText=""
                     document.getElementById('vornameConfirm').innerText=""
@@ -299,6 +297,7 @@
                 document.getElementById('error-label').classList.add('ms-4')
                 document.getElementById('error-label').innerText = text;
             }
+            
         </script>
     </main>
     <div id="impressum" class="m-4">
@@ -314,7 +313,7 @@
         <p>Hier stehen Informationen über uns</p>
     </div>
     <footer class="mt-5 bg-light text-center">
-        <ul class="list-inline align-items-center justify-content-center m-auto py-2">
+        <ul class="m-auto py-2">
           <li class="list-inline-item"><a href="javascript:void(0);" onclick="showSitecontent('impressum')">Impressum</a></li>
           <li class="list-inline-item"><a href="javascript:void(0);" onclick="showSitecontent('datenschutz')">Datenschutz</a></li>
         </ul>
